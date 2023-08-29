@@ -27,13 +27,13 @@ public class EntryResourceTest {
     // testCreateEndpoint with BODY
     @Test
     @Order(2)
-    public void testaaaaaCreateEndpoint() {
+    public void testCreateEndpoint() {
         given().contentType(ContentType.JSON)
         .body("{\"checkIn\": \"2022-03-10T12:15:50\",\"checkOut\": \"2022-03-10T12:15:50\"}")
           .when().post("/entries")
           .then()
              .statusCode(200)
-             .body(is("{\"id\":1,\"checkIn\":\"2022-03-10T12:15:50\",\"checkOut\":\"2022-03-10T12:15:50\"}"));
+             .body(is("{\"id\":1,\"checkIn\":\"2022-03-10T12:15:50\",\"checkOut\":\"2022-03-10T12:15:50\",\"category\":null,\"tags\":null}"));
     }
     // @Test
     // public void testCreateEndpointFail() {
@@ -62,7 +62,7 @@ public class EntryResourceTest {
           .when().post("/entries")
           .then()
              .statusCode(200)
-             .body(is("{\"id\":2,\"checkIn\":\"2022-03-10T12:15:50\",\"checkOut\":\"2022-03-10T12:15:50\"}"));
+             .body(is("{\"id\":2,\"checkIn\":\"2022-03-10T12:15:50\",\"checkOut\":\"2022-03-10T12:15:50\",\"category\":null,\"tags\":null}"));
 
         given()
           .when().delete("/entries/2")
@@ -78,6 +78,6 @@ public class EntryResourceTest {
                 .when().put("/entries")
                 .then()
                 .statusCode(200)
-                .body(is("{\"id\":3,\"checkIn\":\"2022-03-11T12:15:50\",\"checkOut\":\"2022-03-10T12:15:50\"}"));
+                .body(is("{\"id\":3,\"checkIn\":\"2022-03-11T12:15:50\",\"checkOut\":\"2022-03-10T12:15:50\",\"category\":null,\"tags\":null}"));
     }
 }

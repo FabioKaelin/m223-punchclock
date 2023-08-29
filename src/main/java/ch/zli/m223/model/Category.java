@@ -16,8 +16,18 @@ public class Category {
     @Column(nullable = false)
     private String title;
 
+
     @OneToMany(mappedBy = "category")
     private Set<Entry> entry;
+
+
+    public Set<Entry> getEntry() {
+        return entry;
+    }
+
+    public void setEntry(Set<Entry> entry) {
+        this.entry = entry;
+    }
 
     public Long getId() {
         return id;
