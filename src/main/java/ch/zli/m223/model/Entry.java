@@ -8,38 +8,42 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Entry {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Schema(readOnly = true)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(readOnly = true)
+    private Long id;
 
-  @Column(nullable = false)
-  private LocalDateTime checkIn;
+    @Column(nullable = false)
+    private LocalDateTime checkIn;
 
-  @Column(nullable = false)
-  private LocalDateTime checkOut;
+    @Column(nullable = false)
+    private LocalDateTime checkOut;
 
-  public Long getId() {
-    return id;
-  }
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = true)
+    private Category category;
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public LocalDateTime getCheckIn() {
-    return checkIn;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public void setCheckIn(LocalDateTime checkIn) {
-    this.checkIn = checkIn;
-  }
+    public LocalDateTime getCheckIn() {
+        return checkIn;
+    }
 
-  public LocalDateTime getCheckOut() {
-    return checkOut;
-  }
+    public void setCheckIn(LocalDateTime checkIn) {
+        this.checkIn = checkIn;
+    }
 
-  public void setCheckOut(LocalDateTime checkOut) {
-    this.checkOut = checkOut;
-  }
+    public LocalDateTime getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(LocalDateTime checkOut) {
+        this.checkOut = checkOut;
+    }
 }
