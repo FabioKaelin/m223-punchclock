@@ -27,10 +27,10 @@ public class Entry {
 
     @ManyToMany
     @JoinTable(
-        name = "tags",
+        name = "tags_entries",
         joinColumns = @JoinColumn(name = "entry_id"),
-        inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    Set<Tag> tags;
+        inverseJoinColumns = @JoinColumn(name = "tags_id"))
+    Set<Tags> tags;
 
     public Category getCategory() {
         return category;
@@ -40,11 +40,11 @@ public class Entry {
         this.category = category;
     }
 
-    public Set<Tag> getTags() {
+    public Set<Tags> getTags() {
         return tags;
     }
 
-    public void setTags(Set<Tag> tags) {
+    public void setTags(Set<Tags> tags) {
         this.tags = tags;
     }
 

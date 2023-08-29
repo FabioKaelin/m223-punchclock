@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 @Entity
-public class Tag {
+public class Tags {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
