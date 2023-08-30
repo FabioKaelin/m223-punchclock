@@ -10,33 +10,26 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-public class Category {
+public class ApplicationUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
     private Long id;
 
     @Column(nullable = false)
-    private String title;
+    private String username;
 
-    @OneToMany(mappedBy = "category")
-    @JsonIgnoreProperties("category")
-    @Fetch(FetchMode.JOIN)
+    @Column(nullable = false)
+    private String password;
+
+    @OneToMany(mappedBy = "applicationUser")
+    @JsonIgnoreProperties("applicationUser")
     private Set<Entry> entry;
 
-    public Set<Entry> getEntry() {
-        return entry;
-    }
-
-    public void setEntry(Set<Entry> entry) {
-        this.entry = entry;
-    }
 
     public Long getId() {
         return id;
@@ -46,12 +39,20 @@ public class Category {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getUsername() {
+        return username;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Tags {
@@ -23,6 +27,8 @@ public class Tags {
 
 
     @ManyToMany(mappedBy = "tags")
+    @JsonIgnoreProperties("tags")
+    @Fetch(FetchMode.JOIN)
     private Set<Entry> entries;
 
 
